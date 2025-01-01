@@ -147,10 +147,16 @@ def overlay():
                       setTimeout(typeNextLetter, 100);  // Adjust typing speed here
                   } else {
                       // After typing is done, start a timeout to make text disappear after 10 seconds
-                      setTimeout(() => {
-                          element.style.opacity = "0";  // Fade out text after it's complete
-                          isTyping = false;  // Mark typing as complete
-                      }, 10000);  // 10 seconds delay before disappearing
+                      let start = Date.now();
+                      let timer = setInterval(() => {
+                          let time = Date.now() - start;
+                          let opacity = 1 - time / 10000;
+                          element.style.opacity = opacity.toString();  // Fade out text over 10 seconds
+                          if (time >= 10000) {
+                              clearInterval(timer);
+                              isTyping = false;  // Mark typing as complete
+                          }
+                      }, 16);  // 16ms to match 60fps
                   }
               }
 
