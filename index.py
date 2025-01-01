@@ -44,7 +44,8 @@ def get_ai_response(user_input: str) -> str:
         # Generate AI response from the Ollama API
         # You can modify the prompt to get different AI responses or caracteristics
         prompt = f"""
-        You are a fun and interactive Twitch AI assistant named Neuraibu. Your owner is named Perrier. He is a french developer and love Java and thing around Minecraft. Respond humorously:
+        You are a fun and interactive Twitch AI assistant named Neuraibu. Your owner is named Perrier. He is a french developer and love Java and thing around Minecraft. 
+        Your goal is to talk about random things and have a good conversation with viewers. But don't make long responds (like don't make more than 35 words).
         User: {user_input}
         Neuraibu:
         """
@@ -79,94 +80,7 @@ def query():
 # Route to serve the HTML overlay (used in Streamlabs or any browser)
 @app.route('/overlay', methods=['GET'])
 def overlay():
-    return """
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Twitch Overlay</title>
-        <style>
-          #ai-response {
-            position: fixed;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 15px;
-            padding: 10px;
-            color: white;
-            font-size: 24px;
-            max-width: 500px;
-            border: 2px solid #00ff00;
-            opacity: 1;
-          }
-        </style>
-      </head>
-      <body>
-        <div id="ai-response">Waiting for AI response...</div>
-
-        <script>
-          let currentResponse = "";  // Store the current AI response to prevent overwriting
-          let isTyping = false;  // To ensure typing doesn't restart if text is already being typed
-          let typingTimeout;  // To track the timeout for text disappearance
-
-          // Fetch the AI response every 2 seconds
-          setInterval(fetchAIResponse, 2000);
-
-          // Function to fetch the AI response from the server
-          function fetchAIResponse() {
-              fetch('/latest_response')
-                  .then(response => response.json())
-                  .then(data => {
-                      if (data.response && data.response !== currentResponse) {
-                          currentResponse = data.response;  // Update the current response
-                          if (!isTyping) {  // If not typing, start typing the new response
-                              typeEffect(currentResponse);
-                          }
-                      }
-                  })
-                  .catch(error => {
-                      console.error('Error fetching AI response:', error);
-                  });
-          }
-
-          // Function for typing effect
-          function typeEffect(text) {
-              const element = document.getElementById('ai-response');
-              let index = 0;
-              element.innerHTML = "";  // Clear previous text
-              element.style.opacity = "1";  // Make sure the element is visible
-              isTyping = true;  // Mark typing as in progress
-
-              // Function to type the next letter
-              function typeNextLetter() {
-                  if (index < text.length) {
-                      element.innerHTML += text.charAt(index);  // Add next letter
-                      index++;
-                      setTimeout(typeNextLetter, 100);  // Adjust typing speed here
-                  } else {
-                      // After typing is done, start a timeout to make text disappear after 10 seconds
-                      let start = Date.now();
-                      let timer = setInterval(() => {
-                          let time = Date.now() - start;
-                          let opacity = 1 - time / 10000;
-                          element.style.opacity = opacity.toString();  // Fade out text over 10 seconds
-                          if (time >= 10000) {
-                              clearInterval(timer);
-                              isTyping = false;  // Mark typing as complete
-                          }
-                      }, 16);  // 16ms to match 60fps
-                  }
-              }
-
-              typeNextLetter();  // Start the typing effect
-          }
-
-        </script>
-      </body>
-    </html>
-    """
+    return flask.render_template('overlay.html')
 
 # Route to get the latest AI response for the overlay
 @app.route('/latest_response', methods=['GET'])
