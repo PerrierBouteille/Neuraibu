@@ -78,6 +78,12 @@ This repository contains a Twitch AI Overlay application built with the Ollama A
   }
   ```
 
+  You can use curl command to test it:
+
+  ```sh
+  curl -X POST http://localhost:5000/query -H "Content-Type: application/json" -d '{"input": "Hello !"}'
+  ```
+
 - **Streaming Setup:**
 
   Use the overlay URL in Streamlabs or any streaming software to incorporate the AI responses into your Twitch stream.
@@ -159,6 +165,12 @@ Ce dépôt contient une application de superposition AI pour Twitch, construite 
   }
   ```
 
+  Vous pouvez utiliser la commande curl pour faire vos tests:
+
+  ```sh
+    curl -X POST http://localhost:5000/query -H "Content-Type: application/json" -d '{"input": "Hello !"}'
+  ```
+
 - **Configuration pour le streaming :**
 
   Utilisez l'URL de superposition dans Streamlabs ou tout logiciel de streaming pour incorporer les réponses AI dans votre stream Twitch.
@@ -171,4 +183,5 @@ Ce dépôt contient une application de superposition AI pour Twitch, construite 
 ### Licence
 
 Ce projet est sous licence MIT - Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
 
