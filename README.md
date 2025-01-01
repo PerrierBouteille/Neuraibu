@@ -90,6 +90,12 @@ This repository contains a Twitch AI Overlay application built with the Ollama A
 
   Use the overlay URL in Streamlabs or any streaming software to incorporate the AI responses into your Twitch stream.
 
+### Common Issue
+
+If you modified the css of the webpage / overlay, think to clear the cache on your OBS / StreamLabs !   
+`Property of the source > Refresh the cache of this page`
+
+
 ## Français
 
 Ce dépôt contient une application de superposition AI pour Twitch, construite avec l'API Ollama et Flask. Elle est conçue pour générer des réponses AI basées sur les entrées des utilisateurs et les afficher dans un stream Twitch à l'aide d'une superposition HTML.
@@ -176,6 +182,11 @@ Ce dépôt contient une application de superposition AI pour Twitch, construite 
 - **Configuration pour le streaming :**
 
   Utilisez l'URL de superposition dans Streamlabs ou tout logiciel de streaming pour incorporer les réponses AI dans votre stream Twitch.
+
+### Problème courant
+
+Si vous avez modifié le CSS de la page web / superposition, n'oubliez pas de vider le cache sur votre OBS / StreamLabs !  
+`Propriété de la source > Actualiser le cache de cette page`
 
 
 ### Auteur
