@@ -1,0 +1,5 @@
+flask==2.0.1
+ollama==0.1.0
+threading==0.0.1
+time==0.0.1
+json==2.0.9
