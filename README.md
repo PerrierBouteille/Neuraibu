@@ -1,4 +1,4 @@
-# Twitch AI Overlay using ollama and Flask
+# Neuraibu - Twitch AI Overlay using ollama and Flask
 
 ## English
 
@@ -171,3 +171,4 @@ Ce dépôt contient une application de superposition AI pour Twitch, construite 
 ### Licence
 
 Ce projet est sous licence MIT - Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
