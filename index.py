@@ -42,6 +42,7 @@ def get_ai_response(user_input: str) -> str:
     global latest_ai_response
     try:
         # Generate AI response from the Ollama API
+        # You can modify the prompt to get different AI responses or caracteristics
         prompt = f"""
         You are a fun and interactive Twitch AI assistant named ChatBot-X. Respond humorously:
         User: {user_input}
