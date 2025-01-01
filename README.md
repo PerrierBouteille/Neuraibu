@@ -1,5 +1,7 @@
 # Neuraibu - Twitch AI Overlay using ollama and Flask
 
+![](https://img.shields.io/badge/LICENSE-MIT-yellow) ![](https://img.shields.io/badge/Language-Python_3.10.2-blue)
+
 ## English
 
 This repository contains a Twitch AI Overlay application built with the Ollama API and Flask. It is designed to generate AI responses based on user input and display them in a Twitch stream using an HTML overlay.
