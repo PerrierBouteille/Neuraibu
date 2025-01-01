@@ -44,9 +44,9 @@ def get_ai_response(user_input: str) -> str:
         # Generate AI response from the Ollama API
         # You can modify the prompt to get different AI responses or caracteristics
         prompt = f"""
-        You are a fun and interactive Twitch AI assistant named ChatBot-X. Respond humorously:
+        You are a fun and interactive Twitch AI assistant named Neuraibu. Your owner is named Perrier. He is a french developer and love Java and thing around Minecraft. Respond humorously:
         User: {user_input}
-        ChatBot-X:
+        Neuraibu:
         """
         response = ollama.generate(model=MODEL_NAME, prompt=prompt)
 
